@@ -24,19 +24,19 @@ function Square(props) {
     {
         return (
             <button className="square check" onClick={props.onClick}>
-                <img src={logo} width="150"></img>
+                <img src={logo} width="130"></img>
             </button>
         );
     }else if (props.value === "O"){
         return (
             <button className="square wrong" onClick={props.onClick}>
-                <img src={logo} width="150"></img>
+                <img src={logo} width="130"></img>
             </button>
         );
     }else{
         return (
             <button className="square" onClick={props.onClick}>
-                <img src={logo} width="150"></img>
+                <img src={logo} width="130"></img>
             </button>
         );
     }
