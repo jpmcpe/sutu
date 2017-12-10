@@ -16,3 +16,14 @@ body {
     border-bottom: 5px solid red;
     border-top: 5px solid red;
 }
+[class*="col-"] {
+  float: left;
+}
+
+.col-1{
+  width: 8.33%;
+}
+
+.col-3{
+  width: 25%;
+}

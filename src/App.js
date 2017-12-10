@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import logo from './agua.png';
+import logo1 from './agua.png';
+import logo2 from './agua.png';
+import logo3 from './agua.png';
+import logo4 from './agua.png';
 import Modal from 'react-modal';
 import './App.css';
 
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
+    content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+    }
 };
 
 function Square(props) {
@@ -20,19 +24,19 @@ function Square(props) {
     {
         return (
             <button className="square check" onClick={props.onClick}>
-                <img src={logo}></img>
+                <img src={logo} width="100"></img>
             </button>
         );
     }else if (props.value === "O"){
         return (
             <button className="square wrong" onClick={props.onClick}>
-                <img src={logo}></img>
+                <img src={logo} width="100"></img>
             </button>
         );
     }else{
         return (
             <button className="square" onClick={props.onClick}>
-                <img src={logo}></img>
+                <img src={logo} width="100"></img>
             </button>
         );
     }
@@ -43,6 +47,7 @@ class Board extends React.Component {
         return (
             <Square
                 value={this.props.squares[i]}
+                image={"./agua"+i+".jpeg"}
                 onClick={() => this.props.onClick(i)}
             />
         );
@@ -122,17 +127,6 @@ class Game extends React.Component {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
 
-        const moves = history.map((step, move) => {
-            const desc = move ?
-                'Go to move #' + move :
-                'Go to game start';
-            return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
-                </li>
-            );
-        });
-
         let status;
 
         return (
@@ -143,17 +137,14 @@ class Game extends React.Component {
                     onRequestClose={this.closeModal}
                     style={customStyles}
                     contentLabel="Example Modal">
-                    Felicidades GANASTE!!
+                    Felicidades GANASTE y tu Colegio Gano 20 puntos más, sigue asi!
                 </Modal>
+                <h1>Identifica la imagen donde no se desperdicia el agua</h1>
                 <div className="game-board">
                     <Board
                         squares={current.squares}
                         onClick={i => this.handleClick(i)}
                     />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
                 </div>
             </div>
         );
